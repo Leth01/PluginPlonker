@@ -26,7 +26,7 @@ class Port443Plugin(Plugin):
         return isinstance(resource, ServiceResource) and resource.port == 443
 
     def run(self, resource):
-        print(f"Running Port443Plugin for {resource.ip}")
+        print("Running Port443Plugin for {}".format(resource))
 
     def supported_resource_type() -> Type[Resource]:
         return ServiceResource
@@ -44,16 +44,3 @@ class PasswordHashPlugin(Plugin):
     def supported_resource_type() -> Type[Resource]:
         #We tell the PluginManager we're interested in PasswordHashResources!
         return HashResource
- 
-
-class SoftwareVersionPlugin(Plugin):
-    resource_types = [Resource]
-
-    def should_run(self, resource):
-        return isinstance(resource.software_version, str)
-
-    def run(self, resource):
-        print(f"Running SoftwareVersionPlugin for {resource.software_version}")
-
-    def supported_resource_type() -> Type[Resource]:
-        return ServiceResource

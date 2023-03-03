@@ -15,7 +15,7 @@ if __name__ == "__main__":
     #Start the scanner. Presumably start with an nmap scan, resources start coming in
     resources = [
         ServiceResource("192.168.0.1", 80, "http"),
-        ServiceResource("192.168.0.2", 80, "https"),
+        ServiceResource("192.168.0.2", 443, "https"),
         HashResource("9fabbecc76796ac9cb4413f5b9a074c8 ", "0"),
         #SoftwareVersionResource("Apache", "2.4.18")
         #UserCredentialsResource("bob", "BadPassword1"")
@@ -31,6 +31,6 @@ if __name__ == "__main__":
 
     #Future considerations.
     #   - Plugin should probably feed results into storage somehow.
-    #   - Plugin should be able to raise new resources to be scanned.
+    #   - Plugin should be able to raise new resources to go through the same loop as above.
     #   - Would be good if we could support a scheduler on the plugin_manager that's injected into each plugin so that we can register (on_run, or __init__) that we want a specific function to be called every X minutes. This would let Plugins kick off an out of band task (e.g, PasswordCraking) and then periodically poll for the results.
-    #   - Currently we don't have a way of gracefully handling errors. It'd be nice if PluginManager could capture this information rather than each individual plugin.
+    #   - Currently we don't have a way of gracefully handling errors. It'd be nice if PluginManager could capture this information rather than each individual plugin?
