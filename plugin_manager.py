@@ -29,14 +29,6 @@ class Plugin:
     def run(self, resource):
         raise NotImplementedError
 
-    def get_index_fields(self):
-        return {}
-
     @staticmethod
     def supported_resource_type() -> Type[Resource]:
         raise NotImplementedError
-
-    def get_index_value(self, resource):
-        index_fields = self.get_index_fields()
-        index_values = [str(getattr(resource, field)) for field in index_fields.keys()]
-        return '-'.join(index_values)
